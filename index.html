@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Life — Pixel RPG Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar panel">
+      <div>
+        <div class="eyebrow">NPC LIFE // DAY 12</div>
+        <h1>THE DEADLINE DUNGEON</h1>
+      </div>
+      <button class="pixel-btn secondary" id="resetBtn">RESET DAY</button>
+    </header>
+
+    <main>
+      <section class="hero panel">
+        <div class="character-card">
+          <div class="pixel-avatar" aria-label="pixel adventurer">
+            <div class="sprite-head"></div>
+            <div class="sprite-body"></div>
+            <div class="sprite-arm left"></div>
+            <div class="sprite-arm right"></div>
+            <div class="sprite-leg left"></div>
+            <div class="sprite-leg right"></div>
+          </div>
+          <div>
+            <div class="small-label">ADVENTURER</div>
+            <h2>TER</h2>
+            <div class="level-row">
+              <span>LV.<strong id="levelText">7</strong></span>
+              <span id="xpText">720 / 1000 XP</span>
+            </div>
+            <div class="xp-track"><div class="xp-fill" id="xpFill"></div></div>
+          </div>
+        </div>
+
+        <div class="gm-card">
+          <div class="small-label">AI GAME MASTER</div>
+          <p id="gmMessage">A new day begins. Three quests stand between you and victory.</p>
+          <div class="chips">
+            <span>RPG LIFE</span><span>NO EXTRA TASKS</span><span>PERSONAL PROGRESS</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <div class="panel quest-panel">
+          <div class="section-title">
+            <div>
+              <div class="small-label">QUEST LOG</div>
+              <h3>TODAY'S ADVENTURE</h3>
+            </div>
+            <span id="questCount">0 / 3 COMPLETE</span>
+          </div>
+
+          <div class="quest-list" id="questList">
+            <article class="quest-card main-quest" data-id="assignment">
+              <div class="quest-icon">⚔</div>
+              <div class="quest-info">
+                <span class="quest-type">MAIN QUEST</span>
+                <h4>Finish Software Engineering Assignment</h4>
+                <p>Defeat the deadline before midnight.</p>
+                <div class="reward-row"><span>+200 XP</span><span>+15 INT</span><span>+20 DISC</span></div>
+              </div>
+              <button class="pixel-btn quest-btn" data-open="assignment">OPEN</button>
+            </article>
+
+            <article class="quest-card" data-id="datacom">
+              <div class="quest-icon">📡</div>
+              <div class="quest-info">
+                <span class="quest-type">SIDE QUEST</span>
+                <h4>Review Data Communication</h4>
+                <p>Enter the signal dungeon and master today's lesson.</p>
+                <div class="reward-row"><span>+120 XP</span><span>+15 INT</span></div>
+              </div>
+              <button class="pixel-btn quest-btn" data-open="datacom">OPEN</button>
+            </article>
+
+            <article class="quest-card" data-id="workout">
+              <div class="quest-icon">🏃</div>
+              <div class="quest-info">
+                <span class="quest-type">SIDE QUEST</span>
+                <h4>Evening Workout</h4>
+                <p>Train your body and strengthen your resolve.</p>
+                <div class="reward-row"><span>+100 XP</span><span>+10 STR</span></div>
+              </div>
+              <button class="pixel-btn quest-btn" data-open="workout">OPEN</button>
+            </article>
+          </div>
+        </div>
+
+        <aside class="panel stats-panel">
+          <div class="small-label">CHARACTER STATS</div>
+          <h3>YOUR BUILD</h3>
+          <div class="stat"><span>INT</span><div class="stat-track"><div class="stat-fill" id="intBar"></div></div><strong id="intVal">57</strong></div>
+          <div class="stat"><span>STR</span><div class="stat-track"><div class="stat-fill" id="strBar"></div></div><strong id="strVal">44</strong></div>
+          <div class="stat"><span>AGI</span><div class="stat-track"><div class="stat-fill" id="agiBar"></div></div><strong id="agiVal">61</strong></div>
+          <div class="stat"><span>SOC</span><div class="stat-track"><div class="stat-fill" id="socBar"></div></div><strong id="socVal">48</strong></div>
+          <div class="stat"><span>DISC</span><div class="stat-track"><div class="stat-fill" id="discBar"></div></div><strong id="discVal">47</strong></div>
+
+          <div class="divider"></div>
+          <button class="pixel-btn full" id="endDayBtn" disabled>END DAY</button>
+          <p class="hint">Complete all quests to unlock your Adventure Log.</p>
+        </aside>
+      </section>
+
+      <section class="panel adventure-log hidden" id="adventureLog">
+        <div class="section-title">
+          <div>
+            <div class="small-label">AI ADVENTURE LOG</div>
+            <h3>DAY 12 — THE DEADLINE DUNGEON</h3>
+          </div>
+          <span class="badge">DAY CLEARED</span>
+        </div>
+        <p class="story">
+          Today you survived the lecture halls, conquered the Data Communication dungeon,
+          defeated the assignment deadline, and completed your training. Small actions became
+          visible progress — your character grew because you did.
+        </p>
+        <div class="summary-grid">
+          <div><span>QUESTS</span><strong>3 / 3</strong></div>
+          <div><span>XP GAINED</span><strong>+420</strong></div>
+          <div><span>INT</span><strong>+30</strong></div>
+          <div><span>STR</span><strong>+10</strong></div>
+          <div><span>DISC</span><strong>+20</strong></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="questModal">
+    <div class="modal-box panel">
+      <button class="close-btn" id="closeModal">×</button>
+      <div class="small-label" id="modalType">SIDE QUEST</div>
+      <h3 id="modalTitle">Quest Title</h3>
+      <p id="modalDesc">Quest description</p>
+      <div class="modal-meta">
+        <div><span>DIFFICULTY</span><strong id="modalDifficulty">★★★☆☆</strong></div>
+        <div><span>REWARD</span><strong id="modalReward">+120 XP</strong></div>
+      </div>
+      <div class="quest-flavor" id="modalFlavor">Master today's lesson and strengthen your knowledge.</div>
+      <button class="pixel-btn full" id="completeQuestBtn">COMPLETE QUEST</button>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
